@@ -1,0 +1,109 @@
+\usepackage[ngerman]{translator} %Zum ändern der Glossar-Überschrift
+\usepackage[
+	nonumberlist, %keine Seitenzahlen anzeigen
+%	acronym,      %ein Abkürzungsverzeichnis erstellen
+%	section,	%im Inhaltsverzeichnis auf section-Ebene erscheinen
+	toc         %Einträge im Inhaltsverzeichnis
+	]      
+	{glossaries}
+
+%Den Punkt am Ende jeder Beschreibung deaktivieren
+%\renewcommand*{\glspostdescription}{}
+	
+\makeglossaries
+
+
+%https://en.wikibooks.org/wiki/LaTeX/Glossary
+
+
+
+
+\newglossaryentry{akt}{
+	name=Aktivität, 
+	plural=Aktivitäten,
+	description={es gibt zwei Ausprägungen: \glspl{aufgabe} und \glspl{teilprozess}}
+}
+
+\newglossaryentry{aufgabe}{
+	name=Aufgabe, 
+	plural=Aufgaben,
+	description={Synonym: \gls{task}}
+}
+
+\newglossaryentry{ereignis}{
+	name=Ereignis, 
+	plural=Ereignisse,
+	description={Synonym: \gls{event}}
+}
+
+\newglossaryentry{event}{
+	name=Event, 
+	plural=Events,
+	description={Synonym: \gls{ereignis}}
+}
+
+
+\newglossaryentry{task}{
+	name=Task, 
+	plural=Tasks,
+	description={Synonym: \gls{aufgabe}}
+}
+
+\newglossaryentry{teilprozess}{
+	name=Teilprozess,
+	plural=Teilprozesse,
+	description={Synonym: \gls{unterprozess}}
+}
+
+\newglossaryentry{unbestimmt}{
+	name={unbestimmtes},
+	plural={unbestimmte},
+	description={Ereignis, Synonym: \gls{untypisiert} E}
+}
+\newglossaryentry{untypisiert}{
+	name={untypisiertes},
+	plural={untypisierte},
+	description={Ereignis, Synonym: \gls{unbestimmt} E}
+}
+
+\newglossaryentry{unterprozess}{
+	name=Unterprozess,
+	plural=Unterprozesse,
+	description={Synonym: \gls{teilprozess}}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% CMMN
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newglossaryentry{Fall}{
+	name=Fall,
+	plural=F\"alle,
+	description={Synonym: \gls{Case}}
+}
+
+\newglossaryentry{Case}{
+	name=Case,
+	plural=Cases,
+	description={Synonym: \gls{Fall}}
+}
+
+\newglossaryentry{Waechter}{
+	name=W\"achter,
+	plural=W\"achter,
+	description={Synonym: \gls{Sentry}}
+}
+
+\newglossaryentry{Sentry}{
+	name=Sentry,
+	plural=Sentrys,
+	description={Synonym: \gls{Waechter}}
+}
+
+%\newglossaryentry{akt}{
+%	name=,
+%	 plural=,
+%	description={}
+%}
+

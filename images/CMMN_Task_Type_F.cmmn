@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cmmn:definitions xmlns:dc="http://www.omg.org/spec/CMMN/20151109/DC" xmlns:di="http://www.omg.org/spec/CMMN/20151109/DI" xmlns:cmmndi="http://www.omg.org/spec/CMMN/20151109/CMMNDI" xmlns:cmmn="http://www.omg.org/spec/CMMN/20151109/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Test" targetNamespace="http://bpmn.io/schema/cmmn">
+  <cmmn:case id="Case_17vv7u4">
+    <cmmn:casePlanModel id="CasePlanModel_1meb28e" name="Typen">
+      <cmmn:planItem id="PlanItem_0ebh5ye" definitionRef="Task_0aarymz" />
+      <cmmn:planItem id="PlanItem_1iuxeop" definitionRef="Task_0k4j6q8" />
+      <cmmn:planItem id="PlanItem_1tn5xoh" definitionRef="Task_1hexrk1" />
+      <cmmn:planItem id="PlanItem_0p1efdl" definitionRef="Task_0y67mtq" />
+      <cmmn:planItem id="PlanItem_0qs9vpp" definitionRef="EventListener_0xv8oh0" />
+      <cmmn:planItem id="PlanItem_06340un" definitionRef="EventListener_0mige2s" />
+      <cmmn:task id="Task_0aarymz" name="Benutzeraufgabe" />
+      <cmmn:task id="Task_0k4j6q8" name="Fallaufgabe" />
+      <cmmn:task id="Task_1hexrk1" name="Entscheidungs-aufgabe" />
+      <cmmn:task id="Task_0y67mtq" name="Prozessaufgabe" />
+      <cmmn:eventListener id="EventListener_0xv8oh0" name="Prozessbeteiligter" />
+      <cmmn:eventListener id="EventListener_0mige2s" name="Zeit" />
+    </cmmn:casePlanModel>
+  </cmmn:case>
+  <cmmndi:CMMNDI>
+    <cmmndi:CMMNDiagram id="CMMNDiagram_1">
+      <cmmndi:Size xsi:type="dc:Dimension" width="500" height="500" />
+      <cmmndi:CMMNShape id="CasePlanModel_1meb28e_di" cmmnElementRef="CasePlanModel_1meb28e">
+        <dc:Bounds x="-11" y="214" width="360" height="221" />
+        <cmmndi:CMMNLabel />
+      </cmmndi:CMMNShape>
+      <cmmndi:CMMNShape id="PlanItem_038dd2m_di" cmmnElementRef="PlanItem_0ebh5ye">
+        <dc:Bounds x="18" y="235" width="100" height="80" />
+        <cmmndi:CMMNLabel />
+      </cmmndi:CMMNShape>
+      <cmmndi:CMMNShape id="PlanItem_0zrnoia_di" cmmnElementRef="PlanItem_1iuxeop">
+        <dc:Bounds x="18" y="335" width="100" height="80" />
+        <cmmndi:CMMNLabel />
+      </cmmndi:CMMNShape>
+      <cmmndi:CMMNShape id="PlanItem_063ecln_di" cmmnElementRef="PlanItem_1tn5xoh">
+        <dc:Bounds x="150" y="335" width="100" height="80" />
+        <cmmndi:CMMNLabel />
+      </cmmndi:CMMNShape>
+      <cmmndi:CMMNShape id="PlanItem_07sb1n8_di" cmmnElementRef="PlanItem_0p1efdl">
+        <dc:Bounds x="150" y="235" width="100" height="80" />
+        <cmmndi:CMMNLabel />
+      </cmmndi:CMMNShape>
+      <cmmndi:CMMNShape id="PlanItem_17h4wss_di" cmmnElementRef="PlanItem_0qs9vpp">
+        <dc:Bounds x="283" y="257" width="36" height="36" />
+        <cmmndi:CMMNLabel>
+          <dc:Bounds x="258" y="293" width="86" height="13" />
+        </cmmndi:CMMNLabel>
+      </cmmndi:CMMNShape>
+      <cmmndi:CMMNShape id="PlanItem_1dth21j_di" cmmnElementRef="PlanItem_06340un">
+        <dc:Bounds x="283" y="357" width="36" height="36" />
+        <cmmndi:CMMNLabel>
+          <dc:Bounds x="291" y="393" width="19" height="13" />
+        </cmmndi:CMMNLabel>
+      </cmmndi:CMMNShape>
+    </cmmndi:CMMNDiagram>
+  </cmmndi:CMMNDI>
+</cmmn:definitions>

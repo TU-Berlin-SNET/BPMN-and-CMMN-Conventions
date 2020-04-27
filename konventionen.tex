@@ -1,0 +1,680 @@
+\documentclass[12pt,report]{../../Templates/snetTeaching}
+
+
+\input{glossar.tex}
+
+\dokumentTyp{Konventionshandbuch BPMN}
+
+\title{BPMN Konventionshandbuch für die Lehrveranstaltung \lvname{}}
+%\author{Kai Grunert}
+\date{} % Damit kein Datum auf dem Titelblatt erscheint
+
+\lehrveranstaltung{Geschäftsprozesse}			
+
+\email{grunert@snet.tu-berlin.de}
+\hochschule{TU Berlin}
+
+% not only one line at the end or beginning of a page
+\widowpenalty=300
+\clubpenalty=300
+\setlength{\parskip}{3ex plus 2ex minus 2ex}
+
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\noindent
+Das Modul \myhref{http://www.snet.tu-berlin.de/gepit}{\emph{\lvname{}}} der TU Berlin lehrt ausführlich die Modellierung von Geschäftsprozessen mit dem Standard \myhref{http://www.omg.org/spec/BPMN/Current/}{\emph{Business Process Model and Notation}} (BPMN). In diesem Handbuch werden die Konventionen der Lehrveranstaltung zur Modellierung von Geschäftsprozesse erläutert, deren Einhaltung verpflichtend für die Studenten ist.
+
+Im Gegensatz zu anderen Konventionen ist das Ziel nicht die Einschränkung der Symbolpalette zur Steigerung der schnelleren Verständlichkeit eines Diagramms, sondern die Verbesserung der Übersichtlichkeit bei Benutzung der vollständigen BPMN Symbolpalette. Dazu werden einige Möglichkeiten der BPMN eingeschränkt. Des Weiteren sind  Regeln enthalten, die nicht dem Standard widersprechen, sondern als Orientierung zur Vermeidung von häufig gemachten Anfänger-Fehlern dienen.
+
+
+
+\end{abstract}
+
+%TODO: CMMN in die Texte einbauen
+
+
+%TODO: Einarbeiten http://brsilver.com/the-rules-of-bpmn/ 
+%TODO: https://camunda.org/bpmn/examples/#bpmn-modeling-styles-avoid-crossing-flows einpflegen
+%TODO: Einbauen Englisch-Deutsch Übersetzung: http://www.kurze-prozesse.de/bpmn-auf-deutsch/
+%TODO: Buch Fundamentals of BPM: Kapital 5.4.4. S. 175
+
+
+\setcounter{secnumdepth}{3}
+
+\tableofcontents
+
+\glsaddall
+\printglossary[
+%	style=altlist,
+	title={Synonyme}
+]
+
+
+\chapter{Einleitung}
+
+
+
+Dieses Dokument vereinheitlicht die Anwendung des Standards \myhrefemph{http://www.omg.org/spec/BPMN/Current/}{Business Process Model And Notation (BPMN)} für die grafische Darstellung (Notation) von Prozessen in der Lehrveranstaltung \myhrefemph{http://www.snet.tu-berlin.de/gepit}{\lvname{}}. Die Einhaltung dieser Konventionen ist für die Studenten verpflichtend.
+
+
+
+\section{Überblick}
+
+Die Lehrveranstaltung \lvname{} behandelt die vollständige Symbolpalette des BPMN-Standards. Ziel dieser Modellierungskonvention ist es, die Übersichtlichkeit der resultierenden Diagramme zu steigern, indem die verschiedenen Verwendungsmöglichkeiten bewusst eingeschränkt werden. Im Gegensatz zu anderen Konventionen wird die Symbolpalette dafür nicht verkleinert. \\
+Teilweise sind auch Regeln enthalten, die nicht dem Standard widersprechen. Diese sind zur Vermeidung von typischen Anfängerfehlern gedacht, die wir in den Lehrveranstaltungen beobachten konnten.
+
+Ein einheitlicher BPMN-Modellierungsstil führt dazu, dass sich die Geschäftsprozessdiagramme und Geschäftsprozessdokumentationen strukturell und semantisch ähnlich werden. Dadurch wird die Lesbarkeit erhöht und das gemeinsame Verständnis gefördert.
+
+Diese Modellierungskonventionen legen besonderen Wert auf folgende Grundsätze:
+
+\begin{itemize}
+	\item Geschäftsprozessmodelle sollen einfach lesbar sein.
+	
+	\item Die Verwendung von BPMN-Symbolen und Diagrammen soll so erklärt sein, dass sie auch von Modellierungsanfängern gemäß diesen Konventionen richtig eingesetzt werden können.
+	
+	\item Typische, beobachtete Modellierungsfehler sollen vermieden werden.
+	
+	\item Anhand von Beispielen sollen diese Punkte verständlich und allgemein anwendbar gemacht werden.
+\end{itemize}
+
+\section{Weiterführende Ressourcen}
+
+Diese Konvention baut auf der BPMN-Modellierungskonvention für die öffentliche Verwaltung der Schweiz (eCH-0158, veröffentlicht am 04.09.2014) auf und übernimmt einige Abschnitte. Da das Ziel jedoch anders ist (Verständlichkeit vs. Vollständigkeit), wurden viele Abschnitte verändert, entfernt oder erweitert.
+
+Weitere einbezogene Quellen sind:
+\begin{itemize}
+\item Praxisbuch BPMN, 5. Auflage, J. Freund und B. Rücker, 2017
+\item Fundamentals of Business Process Management, M. Dumas, M. La Rosa, J. Mendling und H. Reijers, 2013
+\item \href{https://web.archive.org/web/20160426222746/http://brsilver.com:80/the-rules-of-bpmn/ }{http://brsilver.com/the-rules-of-bpmn/}
+\item \url{https://camunda.org/bpmn/examples/#bpmn-modeling-styles}
+\item \url{https://www.kurze-prozesse.de/bpmn-auf-deutsch/}
+\end{itemize}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Generelle Konventionen}
+
+
+\section{Sprache}
+Manchmal werden unterschiedliche Wörter mit derselben oder ähnlicher Bedeutung (Synonyme) verwendet (beispielsweise statt „prüfen“ die Verben „begutachten“, „kontrollieren“, „mustern“, etc.). Dies kann zu Fehlinterpretationen oder unterschiedlichen Benennungen derselben Elemente führen (beispielsweise „Rechnung prüfen“, „Rechnung kontrollieren“). Deshalb empfiehlt es sich, den selben Begriff durchgängig ein einem Diagramm zu verwenden.
+
+Die Nutzung festgelegter Terminologien (Fachbegriffe) erhöht die allgemeine Verständlichkeit, außerdem ist eine Übersetzung in eine andere Sprache deutlich einfacher, da die Begriffe in den Katalogen festgelegte Übersetzungen besitzen. Über Ontologien sind Begriffe sprachwissenschaftlich in ein lexikalisch-semantisches Begriffsnetz von Oberbegriffen, Unterbegriffen und Synonyme eingeordnet, im deutschsprachigen Raum beispielsweise im \myhref{www.sfs.uni-tuebingen.de/GermaNet}{GermaNet} oder ansatzweise im \myhref{de.wiktionary.org}{Wiktionary}.
+
+\subsection{Abkürzungen}
+
+Allgemein übliche Abkürzungen und Fachbegriffe können verwendet werden.
+
+\subsection{Beschreibungskonventionen}
+
+%\paragraph{Diagramme}
+%Der Diagrammname sollte ein vorangestelltes Substantiv und ein infinitives Verb enthalten, z.B. Bestellanforderung abwickeln.
+
+\paragraph{Pools}
+Pools werden in der Regel mit dem Unternehmensnamen, Organisationseinheiten, dem Prozessnamen oder dem Namen anderer Prozessteilnehmer bezeichnet.
+
+\paragraph{Swimlanes}
+Lanes werden meist mit Rollenbezeichnungen im Singular beschriftet. Eine Lane darf nicht gleich wie ein Pool bezeichnet werden.
+
+\paragraph{Tasks} Atomare \glspl{aufgabe} sind eine nicht weiter unterteilbare Aktivität. Sie wird durch ein vorangestelltes substantiviertes Objekt und ein infinitives Verb bezeichnet, z.B. "`Rechnung versenden"'. Sie müssen atomar sein, d.h. es dürfen nicht mehrere Aktivitäten in einer Aufgabe mit "`und"' verbunden werden.
+
+\paragraph{Unterprozesse} \glspl{teilprozess} bestehen aus mehreren Teilschritten. Sie werden durch die substantivierte Verknüpfung eines Objektes und der Tätigkeit bezeichnet, z.B. "`Rechnungsprüfung"'.
+
+\paragraph{Ereignisse} \glspl{event} beziehen sich immer auf etwas, das bereits passiert ist (unabhängig von der Kategorisierung "`eintretend"' und "`auslösend"'). Sie werden deshalb mit substantiviertem Objekt und passiven Verb beschrieben, z.B. "`Rechnung versandt"' oder "`Essen eingetroffen"'. Ausnahme: Zeitereignis.
+
+
+
+\section{Darstellungskonventionen}
+
+\subsection{Modellierungsrichtung}
+
+Entsprechend dem Sequenzfluss sind die Modelle möglichst von links nach rechts zu modellieren. Rückflüsse (Ausnahme: explizite Rückführungen für Schleifen), Überlagerungen und Überkreuzungen sind bei Nachrichten- und Sequenzflüssen zu vermeiden.
+
+BPMN-Diagramme können mehrere Pools als Teil einer Choreographie enthalten. Alle Pools sind vertikal untereinander anzuordnen. Zugeklappte Pools enthalten mindestens einen eingehenden oder ausgehenden Nachrichtenfluss.
+
+\subsection{Formatierung}
+
+Beschriftungen und Bezeichnungen von Elementen sollen nach Möglichkeit keine Formatierungen (Kursiv, Fett, etc.) enthalten.
+
+Sämtliche BPMN-Elemente sind pro Elementtyp in derselben Größe und Form zu halten (Beispiel: Alle Tätigkeiten sind gleich groß).
+
+Besitzt ein Diagramm mehrere Pools, brauchen diese nicht zwangsläufig über die selbe Diagrammbreite dargestellt werden, sondern können unterschiedliche Größen besitzen. Die Höhe des Pools richtet sich nach dessen Inhalt.
+
+\subsection{Farben}
+Grundsätzlich sind Farben zu vermeiden. Wenn es der Lesbarkeit dient, können den Elementtypen (z.B. alle Aufgaben mit einem gelben Hintergrund) oder auch einzelnen Elementen nach einem klaren Farbkonzept zurückhaltend entsprechende Farben zugewiesen werden, wie das standardmäßig beispielsweise im Signavio-Editor erfolgt.
+
+
+\begin{Rahmen}
+	\ProzessOK[\textwidth]{}{Darstellungskonventionen_Ok}
+	\\
+	\ProzessWRONG[\textwidth]{}{Darstellungskonventionen_F}
+\end{Rahmen}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Modellierungskonventionen BPMN}
+
+
+\section{Aktivitäten}
+
+
+\subsection{Jede Aktivität hat genau einen eingehenden und einen ausgehenden Sequenzfluss}
+\label{konv:oneSeqenceFlow}
+
+Die BPMN-Spezifikation erlaubt, dass \glspl{akt} keinen, einen oder mehrere eingehende und ausgehende Sequenzflüsse besitzen können (Abschnitt 10.3, Sequence Flow Connections). In dieser Konvention wird festgelegt, dass jegliche Aktivitäten (\glspl{aufgabe} und \glspl{unterprozess}) genau einen eingehenden und einen ausgehenden Sequenzfluss besitzen.
+
+
+\begin{Rahmen}
+	\ProzessOK{}{Aktivitaeten_mehrere_Sequenzfluesse_1_OK}
+	\hfill
+	\ProzessWRONG{}{Aktivitaeten_mehrere_Sequenzfluesse_1_F}
+\end{Rahmen}
+
+\textbf{Hinweis:}
+in der Darstellung des erlaubten Falles sind das öffnende und schließende Gateway unterschiedlich. Dies muss in den meisten Fällen vermieden werden (siehe \ref{sec:gwGleichSchliessen}). Es ist so dargestellt, weil es dadurch am ehesten der Semantik des nicht erlaubten Falles entspricht.
+
+\paragraph{Erklärung der nicht erlaubten Modellierung:} Im Fall keines eingehenden Sequenzflusses würde diese Aktivität bei Prozessinstanziierung gestartet werden. 
+Im Fall mehrerer ausgehender Sequenzflüsse wird jeder Sequenzfluss nach Beendigung der Aktivität mit einem Token belegt. Die Semantik würde demnach einem Parallelen Gateway entsprechen.
+Im Fall mehrerer eingehender Sequenzflüsse würde jedes ankommende Token die Aktivität starten, was zu einem "`unkontrollierten"' Ablauf führen würde. Die Semantik entspricht also einem XOR-Gateway, die Sequenzflüsse sind aber nicht synchronisiert.
+Der Fall keines ausgehenden Sequenzflusses entspricht implizit einem unbestimmten Endereignis, d.h. das Token würde nach Beendigung der Aktivität gelöscht werden.\\
+Diese unterschiedliche Semantik der eingehenden und ausgehenden Sequenzflüsse führt oft zu Verwirrungen und ist in dieser Konvention nicht erlaubt. Durch die explizite Darstellung mittels Startereignis, Endereignis Exklusiven und Parallelen Gateway wird die Semantik bewusst modelliert.
+
+
+
+
+\newpage
+\subsection{Bedingte Sequenzflüsse nicht verwenden}
+
+Die BPMN-Spezifikation erlaubt aus Aktivitäten spezielle Sequenzflüsse, die mit einer Raute beginnen, mit Bedingungen zu belegen. Es ist semantisch äquivalent zum inklusiven Gateway. Diese Darstellung der Bedingung an einem Sequenzfluss ist häufig missverständlich und wird in dieser Konvention deshalb untersagt. 
+
+\begin{Rahmen}
+	\ProzessOK{}{Aktivitaeten_bedingte_Sequenzfluesse_OK}
+	\hfill
+	\ProzessWRONG{}{Aktivitaeten_bedingte_Sequenzfluesse_F}
+\end{Rahmen}
+
+\subsection{Aktivitäten normalerweise ohne eingehende Nachrichtenflüsse}
+
+Für eintreffende Nachrichten ist ein empfangendes Nachrichtenereignis zu benutzen. Nur in Ausnahmefällen darf ein eingehender Nachrichtenfluss an eine Aktivität angeheftet sein. Für Ausnahmen, siehe \ref{konv:receivingMessageEvents}.
+
+\begin{Rahmen}
+	\ProzessOK{}{Aktivitaeten_Nachrichtenfluss_OK}
+	\hfill
+	\ProzessWRONG{}{Aktivitaeten_Nachrichtenfluss_F}
+\end{Rahmen}
+
+\pagebreak
+\subsection{Eingebettete Teilprozesse mit einem unbestimmten Startereignis starten}
+
+Ein eingebetteter \Gls{unterprozess} muss immer mit einem untypisiertem Ereignis gestartet werden. 
+
+\begin{Rahmen}
+	\ProzessOK{}{Teilprozess_eingebettet_Startereignis_OK}
+	\hfill
+	\ProzessWRONG{}{Teilprozess_eingebettet_Startereignis_F}
+\end{Rahmen}
+
+\paragraph{Erklärung:} Eingebettete Teilprozesse sind Teil des Elternprozesses und können nicht selbstständig existieren. Der Elternprozess startet immer den Unterprozess -- dies geschieht durch Auslösen des unbestimmten Start-Ereignisses.
+
+\textbf{Hinweis:} Ein wiederverwendbarer \gls{teilprozess} ruft einen global verfügbaren Prozess auf (mit einer Aufruf-Aktivität). Der aufgerufene Prozess muss somit mindestens ein \gls{untypisiert} Startereignis besitzen, damit dieser ausgeführt werden kann. Er kann jedoch außerdem noch weitere, typisierte Startereignisse besitzen, wenn der Prozess auch durch andere Ereignisse instanziiert werden soll.
+
+
+\subsection{Durchlauf-Bedingungen von Schleifen als Anmerkungen an die Aktivität anheften}
+
+Wenn eine Aktivität mit einer Schleifen-Markierung versehen ist, dann ist die Bedingung für den Durchlauf der Schleife als Text-Anmerkung an die Aktivität zu heften. 
+
+Beim normalen Schleifensymbol muss die Textanmerkung zu einer booleschen Bedingung führen, wobei nur bei true die Schleife weiter iteriert wird. Beispiel: "`Bis Event X stattgefunden hat"' bedeutet, dass die Schleife bei einer Evaluation zu "`true"' evaluiert, solange ein externes "`Event X"' noch nicht stattgefunden hat.
+
+Bei Mehrfachausführungs-Markierungen (Parallel und Sequentiell) ist die Anzahl der Wiederholungen bereits vor Beginn der Aktivität bekannt. Die Textanmerkung muss dies widerspiegeln.
+
+\begin{Rahmen}
+	\ProzessOK{}{Schleife_Standard_OK}
+	\hfill
+	\ProzessOK{}{Schleife_Mehrfachaktivitaeten_OK}
+%	\ProzessWRONG{}{}
+\end{Rahmen}
+
+\clearpage
+\subsection{Durchläufe von Mehrfachaktivitäten durch eine vorhergehende Aktivität bestimmen}
+
+Bei Mehrfachaktivitäten steht die Anzahl der Durchführungen vor Beginn der Aktivität fest. Diese kann zur Modellierungszeit festgelegt oder dynamisch zur Prozesslaufzeit ermittelt werden. Wenn sie dynamisch bestimmt wird, dann müssen die Daten vorher im Prozess durch eine Aktivität erfasst und verfügbar sein.
+
+
+\begin{Rahmen}
+	\ProzessOK[0.8\textwidth]{}{Mehrfachaktivitaet_Anzahl}
+\end{Rahmen}
+
+\subsection{Typisierung von Aufgaben nicht notwendig}
+
+\Glspl{aufgabe} können typisiert werden, was insbesondere relevant für die technische Umsetzung von Prozessmodellen ist. Für die Prozessmodelle der Lehrveranstaltung \lvname{} ist es nicht wichtig die Aufgaben zu typisieren -- es wird bei richtiger Verwendung aber auch nicht negativ angerechnet.
+
+\begin{Rahmen}
+	\ProzessOK{}{Aktivitaeten_Typisierung_ohne}
+	\hfill
+	\ProzessNEUTRAL{}{Aktivitaeten_Typisierung_mit}
+\end{Rahmen}
+
+\clearpage
+
+\subsection{Transaktionsunterprozesse mit Abbruchereignissen}
+
+Transaktionsteilprozesse haben eine doppelte Umrandung und können auf unterschiedliche Arten enden (erfolgreich, fehlerhaft, abbrechend). Sie müssen mindestens ein angeheftetes Abbruch-Zwischenereignis besitzen.\\
+Bei der Modellierung eines aufgeklappten Transaktionsteilprozesses muss dieser mindestens ein Abbruch-Endereignis enthalten.
+
+\begin{Rahmen}
+	\ProzessOK{}{Transaktionsunterprozess_OK}
+	\hfill
+	\ProzessWRONG{}{Transaktionsunterprozess_F}
+\end{Rahmen}
+
+\textbf{Hinweis:} Beim Auslösen eines Abbruch-Endereignisses wird der Prozessfluss nicht sofort an das angeheftete Abbruchereignis übergeben -- stattdessen werden zuerst alle Kompensationen von erfolgreich durchgeführten Aktivitäten in umgekehrter Reihenfolge des Sequenzflusses durchgeführt. Erst danach erhält das angeheftete Ereignis das Token zum Fortführen des Prozesses.
+
+
+
+
+
+
+
+
+\clearpage
+\section{Ereignisse}
+
+\subsection{Ereignisse stets beschriften}
+
+Jedes modellierte Ereignis muss eine aussagekräftige Beschriftung besitzen. Auch alle Nachrichtenereignisse müssen der Vollständigkeit halber beschriftet werden, selbst wenn man diese implizit durch den anderen Prozessteilnehmer herleiten könnte.\\
+\textbf{Ausnahme 1:} \glspl{untypisiert} Start- und Endereignisse, sowie angeheftete eintretende Kompensationsereignisse brauchen nicht beschriftet werden.\\ 
+
+
+
+\begin{Rahmen}
+	\ProzessOK{}{Ereignisbeschriftung_ok}
+	\hfill
+	\ProzessWRONG{}{Ereignisbeschriftung_falsch}
+\end{Rahmen}
+
+
+\subsection{Auslösende Nachrichtenereignisse nicht verwenden}
+
+Da das Senden von direkten Nachrichten an andere Prozessteilnehmer (Pools) eine Aktivität impliziert, dürfen keine auslösenden Nachrichtenereignisse verwendet werden. Stattdessen ist eine Aufgabe mit ausgehenden Nachrichtenfluss zu modellieren und die Beschreibungskonvention für \glspl{aufgabe} einzuhalten.  
+
+\begin{Rahmen}
+	\ProzessOK{}{Ausloesendes_Nachrichtenereignis_ok}
+	\hfill
+	\ProzessWRONG{}{Ausloesendes_Nachrichtenereignis_falsch}
+\end{Rahmen}
+
+
+\clearpage
+\subsection{Empfangende Nachrichtenereignisse normalerweise gegenüber Aktivitäten bevorzugen}
+\label{konv:receivingMessageEvents}
+
+Der Nachrichtenempfang ist meistens nur sehr kurz, weshalb hierfür normalerweise keine 
+Für den Empfang von Nachrichten sind empfangende Nachrichtenereignisse zu nutzen, da Ereignisse einen Zustand darstellen, der bereits passiert ist.
+
+
+Nur in folgenden Ausnahmefällen dürfen Aktivitäten mit eingehenden Nachrichtenflüssen verwendet werden:
+\begin{itemize}
+	\item Es soll explizit modelliert werden, dass der Nachrichtenempfang eine Aktivität ist, die mit Hilfe eines angehefteten Ereignisses abgebrochen werden kann.
+	\item Zum Modellieren einer bilateralen Unterhaltung, z.B. bei einer Begrüßung.
+	\item Wenn ein collabierter (zugeklappter) Teilprozess eine oder mehrere empfangende Nachrichten beinhaltet. 
+\end{itemize}
+
+\begin{Rahmen}
+	\ProzessOK{}{Eingehendes_Nachrichtenereignis_ok}
+	\hfill
+	\ProzessWRONG{}{Eingehendes_Nachrichtenereignis_falsch}\\
+	\ProzessOK{}{Eingehendes_Nachrichtenereignis_ok_Ausnahmen}
+	\hfill
+\end{Rahmen}
+
+
+
+\clearpage
+\subsection{Startereignisse}
+
+\subsubsection{Mindestens ein Startereignis pro Pool}
+\label{konv:oneStartEvent}
+
+Jeder Pool muss mindestens ein Startereignis besitzen. Das implizite Starten von Aktivitäten, indem kein eingehender Sequenzfluss modelliert wird, ist verboten. Für eine Erklärung, siehe \ref{konv:oneSeqenceFlow}.
+
+
+\begin{Rahmen}
+	\ProzessOK{}{Startereignis_Min_One_OK}
+	\hfill
+	\ProzessWRONG{}{Startereignis_Min_One_F}
+\end{Rahmen}
+
+
+
+\subsubsection{Maximal ein unbestimmtes Startereignis pro Pool}
+
+Die BPMN-Spezifikation erlaubt die Verwendung von mehreren \glspl{unbestimmt} Startereignissen in einem Pool. Dies wird jedoch problematisch, wenn der Prozess von einer Prozessengine oder einer Aufruf-Aktivität instanziiert wird, da nicht bestimmt werden kann, wie der Prozess gestartet wird. Deshalb erlaubt diese Konvention nur die Modellierung eines unbestimmten Ereignisses pro Pool.
+
+\begin{Rahmen}
+	\ProzessOK{}{Startereignis_Only_One_None_OK}
+	\hfill
+	\ProzessWRONG{}{Startereignis_Only_One_None_F}
+\end{Rahmen}
+
+
+\clearpage
+\subsection{Zwischenereignisse}
+
+\subsubsection{Unbestimmte Zwischenereignisse sind explizite Zustandsanzeigen}
+
+\Glspl{untypisiert} Zwischenereignisse stellen explizite Zustände dar, die durch den Prozessfortschritt erreicht werden. Sie dürfen wie typisierte Ereignisse im Diagramm verwendet werden -- sollten aber nur verwendet werden, wenn ein erreichter Status explizit dargestellt werden soll, z.B. bei Meilensteinen.
+
+\begin{Rahmen}
+	\ProzessOK[0.8\textwidth]{}{Untypisierte_Zwischenereignisse}
+%	\hfill
+%	\ProzessWRONG{}{}
+\end{Rahmen}
+
+
+
+
+\subsubsection{Auslösende Kompensationsereignisse referenzieren Aktivitäten}
+
+Wenn ein auslösendes Kompensations-Zwischen- oder Endereignis benutzt wird, dann muss dieses eine Bezeichnung besitzen, welche auf genau eine  Aktivität verweist. \\
+Handelt es sich dabei um eine atomare Aufgabe, so muss diese ein angeheftetes Kompensationsereignis besitzen. 
+Handelt es sich um einen Unterprozess wird zuerst geprüft, ob ein Ereignis-Teilprozess mit einem Kompensations-Startereignis vorhanden ist. Wenn nicht, werden alle Aktivitäten des Unterprozesses mit angeheftetem Kompensationsereignis kompensiert.
+
+\begin{Rahmen}
+	\ProzessOK[0.8\textwidth]{}{Ausloesendes_Kompensationsereignis_ok}
+%	\hfill
+%	\ProzessWRONG{}{}
+\end{Rahmen}
+
+\textbf{Hinweis:} Technisch kann angegeben werden, ob ein auslösendes Kompensations-Zwischenereignis wartet bis alle Kompensationen durchgeführt wurden (synchron) oder ob der Prozessfluss sofort fortgeführt wird.
+
+
+\clearpage
+\subsection{Endereignisse}
+
+\subsubsection{Mindestens ein Endereignis pro Pool}
+
+Jeder Pool muss mindestens ein Endereignis besitzen. Das implizite Verwenden von unbestimmten Endereignissen, indem aus einer Aktivität kein ausgehender Sequenzfluss modelliert wird, ist verboten. \\
+In Regel \ref{konv:oneStartEvent} wird die Verwendung von Startereignissen vorgegeben. Bei einer solchen Vorgabe sagt die BPMN Spezifikation, dass Endereignisse explizit modelliert werden müssen. 
+
+\begin{Rahmen}
+	\ProzessOK{}{Endereignis_Min_One_OK}
+	\hfill
+	\ProzessWRONG{}{Endereignis_Min_One_F}
+\end{Rahmen}
+
+\subsubsection{Mehrere Endereignisse pro Pool möglich}
+
+Es ist erlaubt in einem Pool mehrere Endereignisse zu verwenden. Der Übersichtlichkeit halber ist es oft sinnvoll einen verzweigten Prozessfluss mit einem Endereignis zu beenden anstatt alle Prozessflüsse letztendlich zusammenzuführen.
+
+\begin{Rahmen}
+	\ProzessOK{}{Endereignis_Multiple_OK}
+	\hfill
+	\ProzessNEUTRAL{}{Endereignis_Multiple_F}
+\end{Rahmen}
+
+
+
+
+
+
+
+\clearpage
+\section{Gateways}
+
+\subsection{Genau ein ausgehender bzw. eingehender Sequenzfluss bei mehreren eingehenden bzw. ausgehenden Sequenzflüssen}
+
+
+Gateways dürfen mehrere eingehende Sequenzflüsse haben. Wenn dies der Fall ist, darf es der Übersichtlichkeit halber nur einen ausgehenden Sequenzfluss geben.
+
+Gateways dürfen auch mehrere ausgehende Sequenzflüsse haben. Wenn dies der Fall ist, darf es der Übersichtlichkeit halber nur einen eingehenden Sequenzfluss geben.
+
+\begin{Rahmen}
+	\ProzessOK{}{Gateways_Sequenzfluesse_OK}
+	\hfill
+	\ProzessWRONG{}{Gateways_Sequenzfluesse_F}
+\end{Rahmen}
+
+
+\subsection{Aktivität vor einem datenbasiertem Gateway}
+
+Exklusive und inklusive Gateways sind datenbasiert, d.h. das Aufteilen des Prozessflusses erfolgt auf Grundlage von Daten, die im Prozess verfügbar sind. Deshalb ist eine Aktivität, die die notwendigen Daten ermittelt, vor einem XOR- und OR-Split-Gateway obligatorisch. Zusätzlich kann (optional) eine Frage an das Gateway modelliert werden, welche die Entscheidung nochmals verdeutlicht.
+
+\begin{Rahmen}
+	\ProzessOK{}{Gateways_Aktivitaet_davor_OK}
+	\hfill
+	\ProzessWRONG{}{Gateways_Aktivitaet_davor_F}
+\end{Rahmen}
+
+\textbf{Hinweis:} Es geht darum, dass die notwendigen Daten im Prozess verfügbar sind. Meistens wird deshalb eine Aktivität direkt vor dem Gateway modelliert. Es ist aber auch möglich, dass diese Daten-Abfrage bereits mehrere Schritte zuvor stattgefunden hat.\\
+Z.B. dürfen mehrere Gateways aufeinander folgen (Achtung: das gilt nicht für ereignisbasierte Gateways). Wenn die Daten für die Entscheidung bereits verfügbar sind, ist das nicht problematisch. Dies ist jedoch mit Vorsicht anzuwenden, da die Lesbarkeit darunter leidet. Meistens können alternativ bei einer Verschachtelung von vielen Gateways auch Geschäftsregel-Aufgaben benutzt werden.
+
+\pagebreak[4]
+\subsection{Bedingungen an den ausgehenden Sequenzflüssen eines datenbasierten Gateways}
+
+Ein datenbasiertes Split-Gateway teilt den Prozessfluss in ein oder mehrere Pfade auf. Damit ersichtlich ist, wann welcher Sequenzfluss fortgesetzt wird, muss jeder ausgehende Sequenzfluss mit einer Bedingung beschriftet sein.
+
+\textbf{Ausnahme:} Die Verwendung des Standardfluss-Symbols bei datenbasierten Gateways entspricht einem ausgehenden Sequenzfluss mit der Bedingung "`Sonstiges"'. Das Symbol wird immer verwendet, wenn nicht alle Antworten mit Sicherheit im Vorfeld beantwortet werden können. 
+
+
+\begin{Rahmen}
+	\ProzessOK{}{Gateways_Bedingungen_OK}
+	\hfill
+	\ProzessWRONG{}{Gateways_Bedingungen_F}
+\end{Rahmen}
+
+
+\subsection{Komplexe Verzweigungen durch die selben Gateways andersherum wieder zusammenführen}
+\label{sec:gwGleichSchliessen}
+
+Wenn ein Prozessmodell mehrere ineinander verschachtelte Verzweigungen besitzt, dann müssen die Sequenzflüsse durch die umgekehrte Reihenfolge der jeweils zuvor verwendeten Gateways wieder zusammengeführt werden.
+
+
+\begin{Rahmen}
+	\ProzessOK{}{Gateways_komplexe_Verzweigung_OK}
+	\hfill
+	\ProzessWRONG{}{Gateways_komplexe_Verzweigung_F}
+\end{Rahmen}
+
+
+\clearpage
+\subsection{Verzweigte Sequenzflüsse auf derselben horizontalen Linie zusammenführen}
+
+Die Zusammenführung von verzweigten Sequenzflüssen erfolgt auf derselben horizontalen Linie wie die Verzweigung.
+
+
+\begin{Rahmen}
+	\ProzessOK{}{Gateways_horizontale_Linie_OK}
+	\hfill
+	\ProzessWRONG{}{Gateways_horizontale_Linie_F}
+\end{Rahmen}
+
+
+
+\subsection{Komplexe Gateways vermeiden}
+
+Komplexe Gateways mit aussagekräftigen Text-Anmerkungen dürfen nur verwendet werden, wenn der abgebildete Sachverhalt nicht durch ein anderes Gateway dargestellt werden kann.
+
+\begin{Rahmen}
+	\ProzessNEUTRAL{}{Gateways_komplex_OK}
+	\hfill
+	\ProzessWRONG{}{Gateways_komplex_F}
+\end{Rahmen}
+
+
+\clearpage
+\subsection{Verwendung von instanziierenden exklusiven ereignisbasierten Gateways verboten}
+
+Semantisch ist die Verwendung von mehreren Startereignissen oder die Verwendung von einem instanziierenden exklusiven ereignisbasiertem Gateway, welches mit mehreren Zwischenereignissen verbunden ist, meist gleich: es muss eines der dargestellten Ereignisse eintreten, welches den Prozess instanziiert. Es handelt sich dann um zwei verschiedene Modellierungsvarianten, weshalb in dieser Konvention die Verwendung des genannten Gateways verboten wird.
+
+\begin{Rahmen}
+	\ProzessOK{}{Gateways_instanziierend_ereignisbasiert_OK}
+	\hfill
+	\ProzessWRONG{}{Gateways_instanziierend_ereignisbasiert_F}
+\end{Rahmen}
+
+
+\paragraph{Erklärung:} Eine Unterscheidung macht die Spezifikation (Abschnitt 13.5.1, gilt auch für das parallele instanziierende ereignisbasierten Gateway). Wenn dieses Verhalten gewollt ist, kommt man um die Verwendung des entsprechenden Gateways nicht herum:
+\begin{quote}
+“It is possible to have multiple groups of Event-Based Gateways starting a Process, provided they participate in the same Conversation and hence share the same correlation information. In that case, one Event out of each group needs to arrive; the first one creates a new Process instance, while the subsequent ones are routed to the existing instance, which is identified through its correlation information.” 
+\end{quote}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Modellierungskonventionen CMMN}
+
+
+%%%
+% CMMN: SVG von bpmn.io zu pdf: convert -density 300 -background transparent file.svg file.pdf
+%%%
+
+
+\section{Allgemein}
+
+
+
+
+
+\subsection{Aufgaben stets typisieren}
+
+Eine Aufgabe muss stets eine der vier möglichen Aufgabentypen zugeordnet sein: Benutzeraufgabe, Prozessaufgabe, Fallaufgabe oder Entscheidungsaufgabe. Ein Ereignis muss ebenfalls immer typisiert sein: Benutzer- oder Zeitevent.
+
+
+\begin{RahmenNoFloat}
+	\ProzessCmmnOKNoFloat{CMMN_Task_Type_OK}
+	\hfill
+	\ProzessCmmnWRONGNoFloat{CMMN_Task_Type_OK}
+\end{RahmenNoFloat}
+
+
+
+
+\subsection{Manuelle Ausführung von Aufgaben}
+
+Es gibt Aufgaben, die manchmal in einem Fall bearbeitet werden müssen. Der Fallbearbeiter kann selbst entscheiden, ob er diese Aufgabe durchführt. Solche Aufgaben sind mit einem unausgefüllten Dreieck (Play-Symbol) versehen. 
+
+\textbf{Achtung}: An dieser Stelle ist die Spezifikation leider widersprüchlich und definiert die Semantik teilweise unterschiedlich. Wir legen fest: wenn der Marker vorhanden ist, wird die Aufgabe/Stage zuerst in den Zustand \emph{Enabled} überführt und wartet darauf vom Akteur manuell gestartet zu werden. Wenn dieser Marker nicht vorhanden ist, wird die Aufgabe/Stage automatisch gestartet sobald sie sich im Zustand \emph{Available} befindet und alle Bedingungen erfüllt sind.
+
+%TODO
+%\begin{Rahmen}
+%%	\ProzessOK{}{Aktivitaeten_mehrere_Sequenzfluesse_1_OK}
+%	\hfill
+%	%TODO: Bild mit Verbindung ohne Beschriftung
+%%	\ProzessWRONG{}{Aktivitaeten_mehrere_Sequenzfluesse_1_F}
+%\end{Rahmen}
+
+
+\subsection{Beendigung einer Stage mit Autocomplete}
+
+Eine Stage mit AutoComplete endet im Zustand \emph{Completed}, wenn es keine \emph{Active} Kind-Aufgaben/Stages mehr gibt UND alle erforderlichen Aufgaben bearbeitet wurden. Das heißt, es könnte z.B. noch normale Aufgaben mit Eingangswächter und manuelle Aufgaben geben, die sich im Zustand \emph{Available} oder \emph{Enabled} befinden, die nie ausgeführt werden.
+
+Eine Stage ohne AutoComplete (schwarzes Stop-Viereck am unteren Rand) endet im Zustand \emph{Completed}, wenn der Fallbearbeiter keine weiteren Aufgaben erledigen könnte -- d.h. alle Kind-Elemente befinden sich im Zustand \emph{Completed, Terminated, Failed oder Disabled} (dies betrifft sowohl manuelle, normale als auch erforderliche Aufgaben) UND es keine Planbaren Aufgaben gibt.
+
+\textbf{Hinweis:} In der Spezifikation gibt es einen kleinen Fehler, so dass AutoComplete normalerweise keine Events beachtet. Wir definieren: eine Stage mit AutoComplete beachtet Events nicht, eine Stage ohne Autocomplete erwartet Events im Zustand \emph{Completed} oder \emph{Terminated} bevor sie enden kann.
+
+%TODO
+%\begin{Rahmen}
+%%	\ProzessOK{}{Aktivitaeten_mehrere_Sequenzfluesse_1_OK}
+%	\hfill
+%	%TODO: Bild mit Verbindung ohne Beschriftung
+%%	\ProzessWRONG{}{Aktivitaeten_mehrere_Sequenzfluesse_1_F}
+%\end{Rahmen}
+
+
+\subsection{Beendigung eines Falls}
+
+Ein Fall endet im Zustand \emph{Completed}, wenn alle enthaltenen Meilensteine, Stages und Aufgaben  sich in einem Endzustand befinden (\emph{Completed, Terminated, Disabled, Failed}). 
+
+Außerdem kann ein Fall auch enden im Zustand \emph{Terminated},  wenn ein Ausgangswächter am Fallrand zutrifft, oder ein Fallbearbeiter den Fall manuell schließt. 
+
+%TODO
+%\begin{Rahmen}
+%%	\ProzessOK{}{Aktivitaeten_mehrere_Sequenzfluesse_1_OK}
+%	\hfill
+%	%TODO: Bild mit Verbindung ohne Beschriftung
+%%	\ProzessWRONG{}{Aktivitaeten_mehrere_Sequenzfluesse_1_F}
+%\end{Rahmen}
+
+
+
+
+
+
+
+\section{Wächter}
+
+Bei den Wächtern kann man unterscheiden zwischen Eingangs- (weißer Diamant) und Ausgangs-Wächter (schwarzer Diamant). Ein Wächter evaluiert ein Lebenzyklus-Event (OnPart) oder eine Bedingung (IfPart), welche sich auf Daten in einem Informationsobjekt des Falls bezieht. Ein Wächter enthält immer mindestens ein OnPart oder ein IfPart, kann aber auch beide besitzen.
+
+\subsection{Verbindungen beschriften mit Lebenzyklus-Events}
+\label{konv:CMMN_VerbindungBeschriften}
+
+Der Verbinder zwischen einem Element und einem Eingangs-\gls{Waechter} visualisiert den OnPart eines Wächters, d.h. dieser überwacht das Eintreten eines definierten Lebenszyklus-Events. 
+
+Um darzustellen um welchen Lebenszyklus-Übergang es sich handelt, wird dieser normalerweise auf den Verbinder geschrieben. Da einige Übergänge häufiger vorkommen, braucht in den folgenden Standardfällen das Lebenszyklus-Event nicht auf den Verbinder geschrieben werden: 
+\begin{itemize}
+\item ausgehende Verbindung aus einer Aufgabe; Standard: \emph{complete}-Event
+\item ausgehende Verbindung aus einem Meilenstein; Standard: \emph{occur}-Event
+\item ausgehende Verbindung aus einem Event; Standard: \emph{occur}-Event
+\item ausgehende Verbindung aus einem Ausgangs-Wächter\footnote{Tatsächlich gibt es keinen Lebenzyklus für Wächter. Hiermit ist eigentlich das \emph{exit}-Event von Tasks/Stages gemeint, welches auftritt, wenn ein Ausgangswächter eintritt. Um dies abzugrenzen von einer normalen ausgehenden Verbindung (\emph{complete}), legt diese Konvention fest, dass die Verbindung aus dem Ausgangswächter erfolgen muss, damit \emph{exit} weggelassen werden kann.)}; Standard: \emph{exit}-Event
+\end{itemize}
+
+Wenn jedoch auf das Eintreten eines anderen Lebenszyklus-Events als der genannten geprüft wird, muss dieses explizit auf den Verbinder geschrieben werden, z.B. bei start, enable, etc.
+
+%TODO
+%\begin{Rahmen}
+%%	\ProzessOK{}{Aktivitaeten_mehrere_Sequenzfluesse_1_OK}
+%	\hfill
+%	%TODO: Bild mit Verbindung ohne Beschriftung
+%%	\ProzessWRONG{}{Aktivitaeten_mehrere_Sequenzfluesse_1_F}
+%\end{Rahmen}
+
+
+
+
+
+
+
+
+
+\subsection{Bedingung eines Eingangs-Wächters mit Textanmerkung beschreiben}
+
+Wenn ein Eingangs-Wächter eine Bedingung (If-Part) besitzt, muss diese Bedingung mit einer Textanmerkung am Wächter beschrieben werden. Wenn keine Textanmerkung vorhanden ist, wird angenommen, dass der Wächter keinen If-Part besitzt. 
+
+\begin{RahmenNoFloat}
+	\ProzessCmmnOKNoFloat{CMMN_Task_Entry_Sentry_OK}
+	\hfill
+	\ProzessCmmnWRONGNoFloat{CMMN_Task_Entry_Sentry_F}
+\end{RahmenNoFloat}
+
+
+%\clearpage
+\subsection{Bedingung eines Ausgangs-Wächters mit Textanmerkung beschreiben}
+
+Aufgaben, Abschnitte und Fälle können Ausgangs-Wächter besitzen, die auf das Eintreten eines Lebenszyklus-Events (OnPart) (siehe dazu \ref{konv:CMMN_VerbindungBeschriften}) oder einer Ausstiegsbedingung (IfPart) prüfen. Wenn es sich um letzteres handelt, muss eine Textanmerkung die Bedingung beschreiben.
+
+RahmenNoFloat
+\begin{RahmenNoFloat}
+	\ProzessCmmnOKNoFloat{CMMN_Task_Exit_Sentry_OK}
+	\hfill
+	\ProzessCmmnWRONGNoFloat{CMMN_Task_Exit_Sentry_F}
+\end{RahmenNoFloat}
+
+\textbf{Erklärung:} Wenn ein Ausgangs-Wächter zutrifft, wird die betreffende Aufgabe, der Abschnitt oder der Fall beendet, d.h. in den Zustand \emph{Terminated} überführt. Dadurch werden (bei Abschnitten und Fällen) alle enthaltenen Aufgaben und Abschnitte ebenfalls beendet und in den Zustand \emph{Terminated} überführt. Im Gegensatz zur normalen Erledigung müssen aktive, offene oder erforderliche Aufgaben dabei nicht abgeschlossen sein, sondern werden beim Eintreffen des Ausgangs-Wächters gewissermaßen abgebrochen.
+
+
+\end{document}

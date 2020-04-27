@@ -1,0 +1,210 @@
+%% klausur.sty
+
+
+%%
+%% dvips -t a4
+%% psnup -2 -Pa4
+%% ps2pdf -sPAPERSIZE=a4
+%%
+
+
+%%% Infos fuer TeX
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{style}
+\message{201/05/05 v0.1 style for SNET Tasks, K. Grunert}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Standardschriftart für den Text festlegen
+%\usepackage{times}                    		%% Standardfont: Times (PS)
+%\usepackage{utopia}               			%% Standardfont: Utopia
+%\usepackage{arial}
+%\usepackage{palatino}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Farbdefinitionen
+\RequirePackage[dvipsnames]{xcolor}         %% Farbgebung: usenames -> Namen der Farben benutzen, dvipsnames & svgnames -> mehr Farbnamen, table -> b
+\definecolor{TUB_ROT}{HTML}{C50E1F}          %% TUB Rote Logo-Farbe
+\definecolor{TUB_GRAU}{HTML}{717171}			%% TUB Grau
+
+% Define Color für Listings
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\definecolor{myLsgColor}{rgb}{0,0,0.4}
+
+%% ein paar Abkuerzungen
+\newcommand{\red}[1]{\textcolor{TUB_ROT}{#1}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% zusätzliche Packages
+\RequirePackage{ifthen}							% \ifthenelse{test}{then clause}{else clause}
+\RequirePackage{ifdraft}						% \ifdraft{Draft-Text}{Final-Text}
+\RequirePackage{lipsum}
+%\RequirePackage{mathtools}						% für Mathesymbole, lädt und erweitert {amsmath}
+\RequirePackage{amsmath}						% für Mathesymbole, lädt und erweitert {amsmath}
+\RequirePackage{amssymb}						
+\RequirePackage{adjustbox}
+\RequirePackage{url}							% \url{URL}
+\RequirePackage{comment,verbatim}				% zum Auskommentieren der Lösungen
+\RequirePackage[final]{hyperref}				% Option final = also enable Links in Draft mode
+\RequirePackage{array}							% Für Tabular-Kommandos
+\RequirePackage{microtype}						% improves the spacing between words and letters
+
+	% mit \myhref{URL}{Ankertext} wird der Ankertext im Dokument angezeigt, der eine bestimmte URL refrenziert; 
+	% zusätzlich wird die URL nochmal als Fußnote angezeigt
+	\newcommand{\myhref}[2]{\href{#1}{#2}\footnote{\url{#1}}}
+	\newcommand{\myhrefemph}[2]{\href{#1}{\emph{#2}\footnote{\url{#1}}}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Seitenlayout
+\RequirePackage{fancyhdr}
+
+%definiere normales Aussehen von Seite
+\pagestyle{fancy}
+
+\renewcommand{\footrulewidth}{0.0pt}
+\renewcommand{\headrulewidth}{0.4pt}
+%\renewcommand{\headrule}{\vbox to 0pt{\hbox to \headwidth{\dotfill}\vss}} %definiere Head-Linie um
+
+\lhead{\sf }
+\chead{\@title}
+\rhead{\sf }
+\lfoot{\sf \large \footersnet}
+\cfoot{\thepage}
+\rfoot{\sf \large \footertub}
+
+
+%es gibt eine Möglichkeit auf Float-Pages die Headings zu deaktivieren mit iffloatpage, etc.
+
+%definiere Stil für alle Seiten die Format "plain" verwenden (z.B. Chapter und Titelblatt)
+% \chapter{} und \maketitle rufen automatisch \thispagestyle{plain} auf!!!
+\fancypagestyle{plain}{%
+	\fancyhf{} % Alle Felder löschen
+	\renewcommand{\footrulewidth}{0.4pt}
+	\renewcommand{\headrulewidth}{0.0pt}
+	\cfoot{\thepage}
+	\lfoot{\footersnet}
+	\rfoot{\footertub}
+}
+
+%\headheight=14pt	%% Unterdr"ucken von Overfull \vbox (1.59999pt too high) has.. 
+
+\newcommand{\blankpage}{% Leerseite ohne Seitennummer, n"achste Seite rechts
+	\clearpage{\pagestyle{empty}\cleardoublepage}
+}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bilder einbinden
+%	
+%	http://en.wikibooks.org/wiki/LaTeX/Importing_Graphics
+%	
+%	\begin{figure}
+%	\centering
+%	\includegraphics[width=xx,height=xx,keepaspectratio=true,scale=xx,angle=xx,trim=l b r t,clip=true,page=x]{file}
+%	\caption[short]{title}
+%	\label{key}
+%	\end{figure}}
+%
+\RequirePackage{graphicx}                         %% Einbinden von Grafiken
+
+% Grafik-Path anpassen
+\graphicspath{
+	{images/}
+}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Commands für Verschiedenes
+%%
+%% 
+%%
+
+
+\newcommand{\footersnet}
+{
+	\begin{minipage}{.2\textwidth}
+		\includegraphics[width=\textwidth]{images/snet.png}
+	\end{minipage}
+}
+
+\newcommand{\footertub}
+{
+	\begin{minipage}{.2\textwidth}
+		\includegraphics[width=\textwidth]{images/tub.png}
+	\end{minipage}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PDF output oder DVI output erkennen
+%
+\RequirePackage{ifpdf}
+% da andere packages auch ifpdf definieren, muss so getan werden, 
+% als ob das package noch nicht definiert ist
+% mit \let\ifpdf\relax entspricht \ifpdf dem build-in no-op cmd \relax
+% alternativ kann auch oben \Requirepackage{ifpdf} genutzt werden 
+%\let\ifpdf\relax
+\ifpdf
+%Definiere nutzbare Grafiktypen: \DeclareGraphicsExtensions{.pdf,.jpg,.png}
+%die Reihenfolge ist entscheidend: (.pdf,.jpg,.png) = zuerst suche pdf, dann jpg, dann png
+%gut, wenn man noch in Entwurfsphase ist Minderwertige Bilder sehen möchte (Bitmaps)
+% PDF = Vektor- oder Bitmaps-Images (aber zum Einbinden ganzer Seiten besser usepackage{pdfpages} nutzen: http://en.wikibooks.org/wiki/LaTeX/Importing_Graphics#Including_full_PDF_pages)
+% JPG = Bitmap, Verlustbehaftet, für Fotos
+% PNG = Bitmap, Verlustfrei, für Screenshots und Diagramme (wenn nicht Vektorgrafik)
+\DeclareGraphicsExtensions{.pdf,.jpg,.png}
+
+%% Informationen f"ur die PDF-Datei
+\hypersetup{
+	pdftitle={GepIT BPMN Konventionen},
+	pdfauthor={Kai Grunert},
+	pdfsubject={Konventionskatalog für BPMN-Modelle},
+	%		bookmarks=true,
+	%		unicode=true,
+	%		pdftoolbar=true,
+	%		pdfmenubar=true,
+	%		pdffitwindow=false,
+	%		pdfstartview={FitH},
+	%		pdfcreator={Creator},
+	%		pdfproducer={Producer},
+	%		pdfkeywords={keyword1} {key2} {key3},
+	%		pdfnewwindow=true,
+	%		colorlinks=false,
+	%		linkcolor=red,
+	%		citecolor=green,
+	%		filecolor=magenta,
+	%		urlcolor=cyan
+	%% siehe: https://de.wikibooks.org/wiki/LaTeX-W%C3%B6rterbuch:_hyperref
+}
+% mehr Optionen zu PDF und hyperref
+\message{***********************************************pdfLaTeX is used}
+
+\else
+% EPS = Vektor und Bitmap-Grafik (Bitmap am besten nicht benutzen, da seeehr groß)
+\DeclareGraphicsExtensions{.eps}
+\message{***********************************************no pdfLaTeX is used}
+\fi
+
+
+
+
+
+
+
+\endinput
+%% End of file `snetBewertungen.sty'
+

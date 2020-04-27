@@ -1,0 +1,47 @@
+\BOOKMARK [0][-]{section*.2}{Synonyme}{}% 1
+\BOOKMARK [0][-]{chapter.1}{Einleitung}{}% 2
+\BOOKMARK [1][-]{section.1.1}{\334berblick}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.2}{Weiterf\374hrende Ressourcen}{chapter.1}% 4
+\BOOKMARK [0][-]{chapter.2}{Generelle Konventionen}{}% 5
+\BOOKMARK [1][-]{section.2.1}{Sprache}{chapter.2}% 6
+\BOOKMARK [2][-]{subsection.2.1.1}{Abk\374rzungen}{section.2.1}% 7
+\BOOKMARK [2][-]{subsection.2.1.2}{Beschreibungskonventionen}{section.2.1}% 8
+\BOOKMARK [1][-]{section.2.2}{Darstellungskonventionen}{chapter.2}% 9
+\BOOKMARK [2][-]{subsection.2.2.1}{Modellierungsrichtung}{section.2.2}% 10
+\BOOKMARK [2][-]{subsection.2.2.2}{Formatierung}{section.2.2}% 11
+\BOOKMARK [2][-]{subsection.2.2.3}{Farben}{section.2.2}% 12
+\BOOKMARK [0][-]{chapter.3}{Modellierungskonventionen BPMN}{}% 13
+\BOOKMARK [1][-]{section.3.1}{Aktivit\344ten}{chapter.3}% 14
+\BOOKMARK [2][-]{subsection.3.1.1}{Jede Aktivit\344t hat genau einen eingehenden und einen ausgehenden Sequenzfluss}{section.3.1}% 15
+\BOOKMARK [2][-]{subsection.3.1.2}{Bedingte Sequenzfl\374sse nicht verwenden}{section.3.1}% 16
+\BOOKMARK [2][-]{subsection.3.1.3}{Aktivit\344ten normalerweise ohne eingehende Nachrichtenfl\374sse}{section.3.1}% 17
+\BOOKMARK [2][-]{subsection.3.1.4}{Eingebettete Teilprozesse mit einem unbestimmten Startereignis starten}{section.3.1}% 18
+\BOOKMARK [2][-]{subsection.3.1.5}{Durchlauf-Bedingungen von Schleifen als Anmerkungen an die Aktivit\344t anheften}{section.3.1}% 19
+\BOOKMARK [2][-]{subsection.3.1.6}{Durchl\344ufe von Mehrfachaktivit\344ten durch eine vorhergehende Aktivit\344t bestimmen}{section.3.1}% 20
+\BOOKMARK [2][-]{subsection.3.1.7}{Typisierung von Aufgaben nicht notwendig}{section.3.1}% 21
+\BOOKMARK [2][-]{subsection.3.1.8}{Transaktionsunterprozesse mit Abbruchereignissen}{section.3.1}% 22
+\BOOKMARK [1][-]{section.3.2}{Ereignisse}{chapter.3}% 23
+\BOOKMARK [2][-]{subsection.3.2.1}{Ereignisse stets beschriften}{section.3.2}% 24
+\BOOKMARK [2][-]{subsection.3.2.2}{Ausl\366sende Nachrichtenereignisse nicht verwenden}{section.3.2}% 25
+\BOOKMARK [2][-]{subsection.3.2.3}{Empfangende Nachrichtenereignisse normalerweise gegen\374ber Aktivit\344ten bevorzugen}{section.3.2}% 26
+\BOOKMARK [2][-]{subsection.3.2.4}{Startereignisse}{section.3.2}% 27
+\BOOKMARK [2][-]{subsection.3.2.5}{Zwischenereignisse}{section.3.2}% 28
+\BOOKMARK [2][-]{subsection.3.2.6}{Endereignisse}{section.3.2}% 29
+\BOOKMARK [1][-]{section.3.3}{Gateways}{chapter.3}% 30
+\BOOKMARK [2][-]{subsection.3.3.1}{Genau ein ausgehender bzw. eingehender Sequenzfluss bei mehreren eingehenden bzw. ausgehenden Sequenzfl\374ssen}{section.3.3}% 31
+\BOOKMARK [2][-]{subsection.3.3.2}{Aktivit\344t vor einem datenbasiertem Gateway}{section.3.3}% 32
+\BOOKMARK [2][-]{subsection.3.3.3}{Bedingungen an den ausgehenden Sequenzfl\374ssen eines datenbasierten Gateways}{section.3.3}% 33
+\BOOKMARK [2][-]{subsection.3.3.4}{Komplexe Verzweigungen durch die selben Gateways andersherum wieder zusammenf\374hren}{section.3.3}% 34
+\BOOKMARK [2][-]{subsection.3.3.5}{Verzweigte Sequenzfl\374sse auf derselben horizontalen Linie zusammenf\374hren}{section.3.3}% 35
+\BOOKMARK [2][-]{subsection.3.3.6}{Komplexe Gateways vermeiden}{section.3.3}% 36
+\BOOKMARK [2][-]{subsection.3.3.7}{Verwendung von instanziierenden exklusiven ereignisbasierten Gateways verboten}{section.3.3}% 37
+\BOOKMARK [0][-]{chapter.4}{Modellierungskonventionen CMMN}{}% 38
+\BOOKMARK [1][-]{section.4.1}{Allgemein}{chapter.4}% 39
+\BOOKMARK [2][-]{subsection.4.1.1}{Aufgaben stets typisieren}{section.4.1}% 40
+\BOOKMARK [2][-]{subsection.4.1.2}{Manuelle Ausf\374hrung von Aufgaben}{section.4.1}% 41
+\BOOKMARK [2][-]{subsection.4.1.3}{Beendigung einer Stage mit Autocomplete}{section.4.1}% 42
+\BOOKMARK [2][-]{subsection.4.1.4}{Beendigung eines Falls}{section.4.1}% 43
+\BOOKMARK [1][-]{section.4.2}{W\344chter}{chapter.4}% 44
+\BOOKMARK [2][-]{subsection.4.2.1}{Verbindungen beschriften mit Lebenzyklus-Events}{section.4.2}% 45
+\BOOKMARK [2][-]{subsection.4.2.2}{Bedingung eines Eingangs-W\344chters mit Textanmerkung beschreiben}{section.4.2}% 46
+\BOOKMARK [2][-]{subsection.4.2.3}{Bedingung eines Ausgangs-W\344chters mit Textanmerkung beschreiben}{section.4.2}% 47

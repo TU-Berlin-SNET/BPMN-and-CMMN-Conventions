@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cmmn:definitions xmlns:dc="http://www.omg.org/spec/CMMN/20151109/DC" xmlns:di="http://www.omg.org/spec/CMMN/20151109/DI" xmlns:cmmndi="http://www.omg.org/spec/CMMN/20151109/CMMNDI" xmlns:cmmn="http://www.omg.org/spec/CMMN/20151109/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Test" targetNamespace="http://bpmn.io/schema/cmmn">
+  <cmmn:caseFileItemDefinition id="CaseFileItemDefinition_1pjlyvm" />
+  <cmmn:case id="Case_137jzca">
+    <cmmn:casePlanModel id="CasePlanModel_00jvcvg" name="Supportanfrage">
+      <cmmn:planItem id="PlanItem_03bw0zk" definitionRef="HumanTask_0rorl6y" />
+      <cmmn:planItem id="PlanItem_14s7wub" definitionRef="ProcessTask_10khsj6">
+        <cmmn:itemControl id="PlanItemControl_0h1abmt">
+          <cmmn:manualActivationRule id="ManualActivationRule_0peu9ve" />
+        </cmmn:itemControl>
+        <cmmn:entryCriterion id="EntryCriterion_0gjwivp" sentryRef="Sentry_0c9ahtq" />
+      </cmmn:planItem>
+      <cmmn:sentry id="Sentry_0c9ahtq" />
+      <cmmn:humanTask id="HumanTask_0rorl6y" name="Lösung ausarbeiten&#10;" />
+      <cmmn:processTask id="ProcessTask_10khsj6" name="Feature Request anlegen&#10;" />
+    </cmmn:casePlanModel>
+  </cmmn:case>
+  <cmmndi:CMMNDI>
+    <cmmndi:CMMNDiagram id="CMMNDiagram_1">
+      <cmmndi:Size xsi:type="dc:Dimension" width="500" height="500" />
+      <cmmndi:CMMNShape id="CasePlanModel_00jvcvg_di" cmmnElementRef="CasePlanModel_00jvcvg">
+        <dc:Bounds x="147" y="84" width="313" height="160" />
+        <cmmndi:CMMNLabel />
+      </cmmndi:CMMNShape>
+      <cmmndi:CMMNShape id="PlanItem_19rbks3_di" cmmnElementRef="PlanItem_03bw0zk">
+        <dc:Bounds x="172" y="144" width="100" height="80" />
+        <cmmndi:CMMNLabel />
+      </cmmndi:CMMNShape>
+      <cmmndi:CMMNShape id="PlanItem_163shxs_di" cmmnElementRef="PlanItem_14s7wub">
+        <dc:Bounds x="345" y="143" width="100" height="80" />
+        <cmmndi:CMMNLabel />
+      </cmmndi:CMMNShape>
+      <cmmndi:CMMNShape id="EntryCriterion_0gjwivp_di" cmmnElementRef="EntryCriterion_0gjwivp">
+        <dc:Bounds x="335" y="173.4768022840828" width="20" height="28" />
+        <cmmndi:CMMNLabel />
+      </cmmndi:CMMNShape>
+    </cmmndi:CMMNDiagram>
+  </cmmndi:CMMNDI>
+</cmmn:definitions>
