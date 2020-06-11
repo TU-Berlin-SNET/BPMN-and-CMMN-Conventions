@@ -340,6 +340,71 @@ Nur in folgenden Ausnahmefällen dürfen Aktivitäten mit eingehenden Nachrichte
 
 
 
+
+
+\clearpage
+\subsection{Empfangen der selben Nachricht}
+
+
+Ein empfangendes Nachrichtenereignis darf ebenfalls mehrere eingehende Nachrichtenflüsse besitzen, wenn es sich um die selbe Nachricht handelt.
+Dass es sich um die gleiche Nachricht handelt muss aus der Benennung des Ereignisses (bzw. der sendenden Aktivitäten) hervorgehen.\\
+Wenn es sich bei den Sendenden um die gleiche Gruppe handelt, kann dies durch einen \emph{Mehrfach-Teilnehmer} (Schreibweise: Einzahl) symbolisiert werden, welcher dann allerdings durch nur einen Nachrichtenfluss mit dem Empfangsereignis verbunden ist.
+
+Die Bedeutung: es wird lediglich auf die \emph{erste} eintreffende Nachricht gewartet und der Prozess dann sofort fortgesetzt. Alle für die selbe Prozessinstanz später eintreffenden Nachrichten werden normalerweise verworfen.
+Das Empfangen mehrerer Nachrichten muss mit Schleifen modelliert werden (siehe \ref{konv:multipleReceive}).
+
+\begin{Rahmen}
+	\ProzessOK{}{Nachricht_Empfangen_ok}
+	\hfill
+	\ProzessWRONG{}{Nachricht_Empfangen_falsch}
+\end{Rahmen}
+
+
+
+
+
+\subsection{Empfangen mehrerer Nachrichten des selben Inhalts}
+\label{konv:multipleReceive}
+
+Wenn in einem Prozess mehrere Nachrichten mit dem selben Inhalt empfangen werden sollen, dann muss dies durch Schleifen modelliert werden.
+Dafür sollten empfangende Aktivitäten mit Schleifensymbolen verwendet werden. 
+Bei diesen ist es sinnvoll ein abbrechendes Zeitereignis anzuhängen, damit nicht unendlich lange auf noch ausstehende Nachrichten gewartet wird.
+
+Wenn mehrere Nachrichten empfangen werden, dann sollen im Normalfall auch mehrere Teilnehmer (d.h. Pools) dargestellt werden. (Ausnahme: wenn die selbe Nachricht mehrmals vom selben Teilnehmer gesendet wird.)
+Die Darstellung einer Gruppe kann auch durch das \emph{Mehrfach-Teilnehmer}-Symbol ausgedrückt werden.
+
+
+\begin{Rahmen}
+	\ProzessOK{}{Mehrere_Nachrichten_Empfangen_ok}
+	\hfill
+	\ProzessWRONG{}{Mehrere_Nachrichten_Empfangen_falsch}
+\end{Rahmen}
+
+
+
+\subsection{Senden der selben Nachricht}
+
+Aus einer sendenden Aktivität können mehrere Nachrichtenflüsse herausführen, wenn es inhaltlich die selbe Nachricht ist und dargestellt werden soll, dass diese zu mehreren, ausgewählten Empfängern direkt gesendet wird. 
+Wenn es sich um eine Nachricht für einen unbestimmten Empfängerkreis handelt, dann muss ein Signalereignis genutzt werden.\\
+Wenn es sich bei den Empfängern um die gleiche Gruppe handelt, kann dies durch einen \emph{Mehrfach-Teilnehmer} (Schreibweise: Einzahl) symbolisiert werden, welcher dann allerdings durch nur einen Nachrichtenfluss mit der sendenden Aktivität verbunden ist.
+
+\begin{Rahmen}
+	\ProzessOK{}{Mehrere_Nachrichten_Senden_ok}
+	\hfill
+	\ProzessWRONG{}{Mehrere_Nachrichten_Senden_falsch}
+\end{Rahmen}
+
+
+
+
+
+
+
+
+
+
+
+
 \clearpage
 \subsection{Startereignisse}
 
